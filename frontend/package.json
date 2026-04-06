@@ -1,0 +1,32 @@
+{
+  "name": "vigil-ai-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "1.8.4",
+    "chart.js": "4.4.8",
+    "framer-motion": "11.18.2",
+    "lucide-react": "0.482.0",
+    "next": "15.2.4",
+    "react": "18.3.1",
+    "react-chartjs-2": "5.3.0",
+    "react-dom": "18.3.1",
+    "recharts": "^3.8.1",
+    "three": "0.174.0",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.14",
+    "@types/react": "18.3.20",
+    "@types/react-dom": "18.3.6",
+    "autoprefixer": "10.4.21",
+    "postcss": "8.5.3",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.8.2"
+  }
+}

@@ -1,7 +1,5 @@
-.env
-.env.local
-.env.*.local
 node_modules/
+.env
+.next/
 dist/
 build/
-__pycache__/
