@@ -17,19 +17,20 @@ export function buttonStyles({
   className?: string;
 }) {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-2xl font-medium transition duration-200",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12]",
-    "disabled:cursor-not-allowed disabled:opacity-50",
-    size === "sm" && "h-10 px-3.5 text-sm",
-    size === "md" && "h-11 px-4 text-sm",
-    size === "lg" && "h-12 px-5 text-sm",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl font-medium transition-all duration-300",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b18]",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:transform-none disabled:hover:shadow-none",
+    size === "sm" && "h-10 px-4 text-xs",
+    size === "md" && "h-11 px-5 text-sm",
+    size === "lg" && "h-12 px-6 text-[15px]",
     variant === "primary" &&
-      "border border-[#d9f7ff]/10 bg-[linear-gradient(135deg,rgba(227,247,255,0.98),rgba(101,233,209,0.94))] text-[#061019] shadow-[0_18px_40px_rgba(62,214,194,0.2)] hover:translate-y-[-1px]",
+      "border border-neon/25 bg-[linear-gradient(135deg,rgba(var(--neon-rgb),1),rgba(92,221,255,0.96)_48%,rgba(var(--pulse-rgb),0.96))] text-[#041120] shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_18px_50px_rgba(var(--neon-rgb),0.22)] hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_24px_64px_rgba(var(--neon-rgb),0.28)]",
     variant === "secondary" &&
-      "border border-white/10 bg-white/[0.04] text-white/88 hover:border-white/16 hover:bg-white/[0.08]",
-    variant === "ghost" && "text-white/70 hover:bg-white/[0.05] hover:text-white",
+      "border border-white/10 bg-white/[0.04] text-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:-translate-y-0.5 hover:border-neon/25 hover:bg-white/[0.08] hover:text-white",
+    variant === "ghost" &&
+      "border border-transparent bg-transparent text-white/64 hover:border-white/10 hover:bg-white/[0.05] hover:text-white",
     variant === "danger" &&
-      "border border-danger/20 bg-danger/10 text-danger hover:border-danger/30 hover:bg-danger/15",
+      "border border-danger/25 bg-danger/10 text-danger shadow-[0_12px_32px_rgba(var(--danger-rgb),0.12)] hover:-translate-y-0.5 hover:border-danger/40 hover:bg-danger/10",
     className
   );
 }

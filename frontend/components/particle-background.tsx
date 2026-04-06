@@ -17,6 +17,16 @@ type Particle = {
   tint: "neon" | "pulse";
 };
 
+type ShootingStar = {
+  x: number;
+  y: number;
+  length: number;
+  speed: number;
+  angle: number;
+  opacity: number;
+  fadeRate: number;
+};
+
 type Palette = ReturnType<typeof paletteForMode>;
 
 function paletteForMode(mode: AppMode) {
@@ -40,6 +50,7 @@ export const ParticleBackground = memo(function ParticleBackground() {
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const rafRef = useRef<number | null>(null);
   const particlesRef = useRef<Particle[]>([]);
+  const shootingStarsRef = useRef<ShootingStar[]>([]);
   const pointerRef = useRef({ x: 0, y: 0, active: false });
   const paletteRef = useRef<Palette>(paletteForMode(useAppStore.getState().mode));
   const modeRef = useRef<AppMode>(useAppStore.getState().mode);
@@ -122,6 +133,7 @@ export const ParticleBackground = memo(function ParticleBackground() {
       const palette = paletteRef.current;
       const pointer = pointerRef.current;
       const particles = particlesRef.current;
+      const shootingStars = shootingStarsRef.current;
       const time = performance.now() * 0.001;
 
       ctx.clearRect(0, 0, width, height);
@@ -130,6 +142,63 @@ export const ParticleBackground = memo(function ParticleBackground() {
       drawGlow(width * 0.82, height * 0.16, 250 + Math.cos(time * 0.9) * 18, palette.pulse, 0.06);
       drawGlow(width * 0.56, height * 0.78, 280 + Math.sin(time * 0.65) * 24, palette.aura, 0.05);
 
+      // --- Shooting Stars ---
+      // Spawn new star (approx ~2-3% chance per frame)
+      if (Math.random() < 0.02) {
+        // Angles around 135 degrees (moving bottom left)
+        const angle = (Math.PI * 3) / 4 + (Math.random() * 0.1 - 0.05);
+        shootingStars.push({
+          x: Math.random() * width * 1.5, // start further to the right to cross screen
+          y: (Math.random() * height * 0.3) - height * 0.2, // spawn high up
+          length: Math.random() * 120 + 80,
+          speed: Math.random() * 8 + 12, // px per frame
+          angle,
+          opacity: Math.random() * 0.4 + 0.5,
+          fadeRate: Math.random() * 0.015 + 0.01,
+        });
+      }
+
+      // Render Shooting Stars
+      for (let i = shootingStars.length - 1; i >= 0; i--) {
+        const star = shootingStars[i];
+        const vx = Math.cos(star.angle) * star.speed;
+        const vy = Math.sin(star.angle) * star.speed;
+
+        star.x += vx;
+        star.y += vy;
+        star.opacity -= star.fadeRate;
+
+        if (star.opacity <= 0 || star.x < -200 || star.y > height + 200) {
+          shootingStars.splice(i, 1);
+          continue;
+        }
+
+        const tailX = star.x - Math.cos(star.angle) * star.length;
+        const tailY = star.y - Math.sin(star.angle) * star.length;
+
+        const gradient = ctx.createLinearGradient(star.x, star.y, tailX, tailY);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+        gradient.addColorStop(0.1, `rgba(${palette.neon}, ${star.opacity * 0.8})`);
+        gradient.addColorStop(1, `rgba(${palette.neon}, 0)`);
+
+        ctx.beginPath();
+        ctx.moveTo(star.x, star.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1.5;
+        ctx.lineCap = "round";
+        ctx.stroke();
+
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = `rgba(${palette.neon}, ${star.opacity})`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      // --- Particles ---
       for (const particle of particles) {
         const driftX = Math.cos(time * 0.55 + particle.phase) * 8;
         const driftY = Math.sin(time * 0.7 + particle.phase) * 9;

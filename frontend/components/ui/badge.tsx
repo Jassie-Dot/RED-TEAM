@@ -12,12 +12,16 @@ export function Badge({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em]",
-        variant === "neutral" && "border-white/10 bg-white/[0.04] text-white/62",
-        variant === "success" && "border-neon/20 bg-neon/10 text-neon",
-        variant === "warning" && "border-pulse/22 bg-pulse/10 text-pulse",
-        variant === "danger" && "border-danger/22 bg-danger/10 text-danger",
-        variant === "outline" && "border-white/12 bg-transparent text-white/56",
+        "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.24em]",
+        variant === "neutral" &&
+          "border-white/10 bg-white/[0.05] text-white/66 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]",
+        variant === "success" &&
+          "border-success/25 bg-success/10 text-success shadow-[0_0_0_1px_rgba(var(--success-rgb),0.08),0_0_20px_rgba(var(--success-rgb),0.12)]",
+        variant === "warning" &&
+          "border-warning/25 bg-warning/10 text-warning shadow-[0_0_0_1px_rgba(var(--warning-rgb),0.08),0_0_20px_rgba(var(--warning-rgb),0.12)]",
+        variant === "danger" &&
+          "border-danger/25 bg-danger/10 text-danger shadow-[0_0_0_1px_rgba(var(--danger-rgb),0.08),0_0_20px_rgba(var(--danger-rgb),0.12)]",
+        variant === "outline" && "border-white/12 bg-transparent text-white/58",
         className
       )}
       {...props}
