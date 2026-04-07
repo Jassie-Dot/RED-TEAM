@@ -1,0 +1,37 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 915258,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\0o~269zocnb95.js",
+      ".next\\static\\chunks\\12_l59as_3~pp.js",
+      ".next\\static\\chunks\\11kjahy2ntf0n.js",
+      ".next\\static\\chunks\\0cf0em-8gt8cl.js",
+      ".next\\static\\chunks\\0bogtdbh.dcu1.js",
+      ".next\\static\\chunks\\turbopack-09zbh2gohr28_.js"
+    ]
+  },
+  {
+    "route": "/interview",
+    "firstLoadUncompressedJsBytes": 521531,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\0o~269zocnb95.js",
+      ".next\\static\\chunks\\0ghwwkg80gsjs.js",
+      ".next\\static\\chunks\\11kjahy2ntf0n.js",
+      ".next\\static\\chunks\\0cf0em-8gt8cl.js",
+      ".next\\static\\chunks\\0bogtdbh.dcu1.js",
+      ".next\\static\\chunks\\turbopack-09zbh2gohr28_.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 513588,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\0o~269zocnb95.js",
+      ".next\\static\\chunks\\11kjahy2ntf0n.js",
+      ".next\\static\\chunks\\0cf0em-8gt8cl.js",
+      ".next\\static\\chunks\\0bogtdbh.dcu1.js",
+      ".next\\static\\chunks\\turbopack-09zbh2gohr28_.js"
+    ]
+  }
+]
