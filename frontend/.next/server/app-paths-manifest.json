@@ -1,0 +1,5 @@
+{
+  "/(workspace)/student-lab/page": "app/(workspace)/student-lab/page.js",
+  "/(workspace)/reports/page": "app/(workspace)/reports/page.js",
+  "/(workspace)/page": "app/(workspace)/page.js"
+}

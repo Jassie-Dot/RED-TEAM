@@ -1,0 +1,4 @@
+c:\Users\Lenovo\Documents\Vigil AI\frontend\.next\package.json
+c:\Users\Lenovo\Documents\Vigil AI\frontend\.next\types\package.json
+c:\Users\Lenovo\Documents\Vigil AI\frontend\.next-app\package.json
+c:\Users\Lenovo\Documents\Vigil AI\frontend\.next-app\types\package.json
