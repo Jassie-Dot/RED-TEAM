@@ -1,38 +1,133 @@
-# VIGIL-AI
+# 🚀 Vigil AI  
+### AI-Powered Fake Resume Detection System  
 
-Cyber-styled fake resume detector for employer screening.
+> **“Trust Talent. Verify Truth.”**
 
-## What it does
+---
 
-1. Plays a boot sequence and opens role-based entry for `Employer` and `Student`
-2. Uploads a resume from the employer dashboard
-3. Extracts readable text from `PDF`, `DOCX`, and text-based files
-4. Uses `Groq` to analyze the resume and generate technical screening questions when `GROQ_API_KEY` is present
-5. Falls back to a local heuristic pipeline when the API key is missing or the API call fails
-6. Evaluates answers and returns an authenticity verdict with a digital resume twin and scorecards
+## 📌 Overview  
+**Vigil AI** is an intelligent resume verification system that leverages **Artificial Intelligence, Machine Learning, and Natural Language Processing (NLP)** to detect fake or exaggerated claims in resumes.  
 
-## Run
+It empowers recruiters to make **faster, smarter, and more reliable hiring decisions** by going beyond simple keyword matching.
 
+---
+
+## ❗ Problem Statement  
+- Rising number of **fake and exaggerated resumes**  
+- Manual verification is **time-consuming and inefficient**  
+- Bad hires cost companies **₹5–20 Lakhs per employee**  
+- Existing tools focus on **filtering, not verification**  
+
+---
+
+## 💡 Solution  
+Vigil AI provides an AI-driven system to:  
+- Analyze resumes automatically  
+- Detect inconsistencies and fraud  
+- Validate skills and experience  
+- Generate a **confidence score**  
+
+👉 Result: **Accurate, fast, and scalable hiring verification**
+
+---
+
+## ✨ Key Features  
+- 📄 Resume Authenticity Score  
+- 🧠 AI-Based Skill Verification  
+- ⚡ Real-Time Resume Analysis  
+- 📊 Recruiter Dashboard  
+- 🔍 Deep Pattern Detection  
+
+---
+
+## 🧠 How It Works  
+1. Upload resume  
+2. NLP processes the content  
+3. ML models analyze:
+   - Skills vs experience  
+   - Timeline consistency  
+   - Claim authenticity  
+4. System generates:
+   - Risk score  
+   - Insights report  
+
+---
+
+## 🆚 Why Vigil AI is Different  
+
+| Feature | Traditional Tools | Vigil AI |
+|--------|----------------|---------|
+| Keyword Matching | ✅ | ✅ |
+| Fraud Detection | ❌ | ✅ |
+| Contextual AI Analysis | ❌ | ✅ |
+| Real-Time Insights | ❌ | ✅ |
+| Risk Scoring | ❌ | ✅ |
+
+👉 Traditional tools **filter resumes**  
+👉 Vigil AI **verifies truth**
+
+---
+
+## 📊 Market Opportunity  
+- 🌍 Global HR Tech Market: **$35+ Billion**  
+- 📈 Growing demand for **automated hiring tools**  
+- 🚀 Increasing need for **fraud detection in recruitment**  
+
+---
+
+## 🎯 SDG Alignment  
+This project contributes to:  
+- **SDG 8** – Decent Work and Economic Growth  
+- **SDG 16** – Peace, Justice and Strong Institutions  
+- *(Supports SDG 9 – Industry, Innovation, and Infrastructure)*  
+
+---
+
+## 🛠️ Tech Stack  
+- Frontend: React.js / HTML / CSS / JS  
+- Backend: Node.js / Express *(or your stack)*  
+- AI/ML: Python / NLP Models  
+- APIs: Resume parsing / AI APIs  
+
+---
+
+## 📁 Project Structure  
+Vigil-AI/
+│── frontend/
+│── backend/
+│── models/
+│── assets/
+│── README.md
+
+---
+
+## 🚀 Getting Started  
+
+### 1️⃣ Clone the Repository  
 ```bash
+git clone https://github.com/Jassie-Dot/RED-TEAM.git
+cd vigil-ai
+2️⃣ Install Dependencies
 npm install
-npm run dev
-```
+3️⃣ Run the Application
+npm start
 
-Open `http://localhost:3000`.
+🔮 Future Scope
+LinkedIn & job portal integration
+Blockchain-based resume verification
+Enterprise SaaS deployment
+Global scaling
+🤝 Contributing
 
-## Environment
+Contributions are welcome!
 
-Create a local `.env.local` file with:
+Fork the repo
+Create a new branch
+Make your changes
+Submit a pull request
+📜 License
 
-```bash
-GROQ_API_KEY=your_groq_api_key
-GROQ_MODEL=llama-3.3-70b-versatile
-```
+This project is licensed under the MIT License
 
-`GROQ_MODEL` is optional. If omitted, the app uses the default above.
-
-## Notes
-
-- Resume extraction is strongest with text-rich PDF or DOCX files.
-- If Groq is unavailable, the app still works in fallback mode.
-- The employer flow redirects straight from upload into the generated questions phase.
+👨‍💻 Author
+RED TEAM
