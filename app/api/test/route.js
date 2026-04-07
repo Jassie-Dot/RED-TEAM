@@ -1,12 +1,27 @@
 import { NextResponse } from "next/server";
-import { generateQuestionsForSkills } from "../../../lib/mockAssessment";
+import { generateQuestionsForScreening } from "../../../lib/resumeScreening";
+
+export const runtime = "nodejs";
 
 export async function POST(request) {
-  const body = await request.json();
-  const questions = generateQuestionsForSkills(body?.skills ?? []);
+  try {
+    const body = await request.json();
+    const questions = await generateQuestionsForScreening({
+      skills: body?.skills ?? [],
+      resumeText: body?.resumeText ?? "",
+    });
 
-  return NextResponse.json({
-    success: true,
-    questions,
-  });
+    return NextResponse.json({
+      success: true,
+      questions,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || "Unable to generate screening questions.",
+      },
+      { status: 500 },
+    );
+  }
 }

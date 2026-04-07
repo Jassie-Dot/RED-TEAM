@@ -1,18 +1,28 @@
 import { NextResponse } from "next/server";
-import { evaluateAssessment } from "../../../lib/mockAssessment";
+import { evaluateResumeAuthenticity } from "../../../lib/resumeScreening";
+
+export const runtime = "nodejs";
 
 export async function POST(request) {
-  const body = await request.json();
+  try {
+    const body = await request.json();
+    const report = await evaluateResumeAuthenticity({
+      answers: body?.answers ?? {},
+      questions: body?.questions ?? [],
+      resumeData: body?.resumeData ?? null,
+    });
 
-  const report = evaluateAssessment({
-    answers: body?.answers ?? {},
-    questionIds: body?.questionIds ?? [],
-    skills: body?.skills ?? [],
-    claimedLevels: body?.claimedLevels ?? {},
-  });
-
-  return NextResponse.json({
-    success: true,
-    report,
-  });
+    return NextResponse.json({
+      success: true,
+      report,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || "Unable to evaluate the interview responses.",
+      },
+      { status: 500 },
+    );
+  }
 }

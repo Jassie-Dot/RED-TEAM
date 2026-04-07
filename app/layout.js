@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "VIGIL-AI",
-  description: "Employer-side screening MVP for resume validation and skill testing.",
+  description: "Cyber-styled fake resume detector with Groq-powered extraction, question generation, and authenticity scoring.",
 };
 
 export default function RootLayout({ children }) {

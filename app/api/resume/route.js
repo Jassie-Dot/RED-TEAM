@@ -1,13 +1,31 @@
 import { NextResponse } from "next/server";
-import { getMockResume } from "../../../lib/mockAssessment";
+import { analyzeUploadedResume } from "../../../lib/resumeScreening";
+
+export const runtime = "nodejs";
 
 export async function POST(request) {
-  const formData = await request.formData();
-  const file = formData.get("resume");
-  const fileName = typeof file?.name === "string" ? file.name : "mock_resume.pdf";
+  try {
+    const formData = await request.formData();
+    const file = formData.get("resume");
 
-  return NextResponse.json({
-    success: true,
-    resumeData: getMockResume(fileName),
-  });
+    if (!file || typeof file.arrayBuffer !== "function") {
+      return NextResponse.json({ success: false, error: "Upload a resume file before starting the scan." }, { status: 400 });
+    }
+
+    const { resumeData, questions } = await analyzeUploadedResume(file);
+
+    return NextResponse.json({
+      success: true,
+      resumeData,
+      questions,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || "Unable to analyze the uploaded resume.",
+      },
+      { status: 500 },
+    );
+  }
 }

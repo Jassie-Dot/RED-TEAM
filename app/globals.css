@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --bg: #07111f;
   --bg-alt: #0d1b2d;
@@ -471,5 +473,98 @@ button:disabled {
   .report-summary,
   .skill-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 420ms ease-out;
+}
+
+.hero-link-row {
+  margin-top: 20px;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(103, 232, 249, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 249, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: grid-drift 22s linear infinite;
+}
+
+.scanline-overlay {
+  background-image: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.14), transparent);
+  background-size: 100% 8px;
+  animation: scanlines 14s linear infinite;
+}
+
+.aurora-ring {
+  animation: float-glow 7s ease-in-out infinite;
+}
+
+.boot-line {
+  animation: fade-in-up 420ms ease-out both;
+}
+
+.boot-cursor {
+  animation: blink 900ms steps(2, end) infinite;
+}
+
+@keyframes grid-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, -36px, 0);
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(10%);
+  }
+}
+
+@keyframes float-glow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.06);
+  }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
   }
 }
